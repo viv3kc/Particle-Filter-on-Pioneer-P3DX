@@ -1,0 +1,7 @@
+<launch>
+<node pkg="tf" type="static_transform_publisher" name="map_to_odom" args="0 0 0 0 0 0 /map /odom 100"/>
+<node name="map_server" pkg="map_server" type="map_server" args="$(find pf_localisation)/newlowerground.yaml" />
+<node name="stage" pkg="stage_ros" type="stageros" args="$(find pf_localisation)/newlowerground.world" />
+<node name="rviz" pkg="rviz" type="rviz" args="" />
+<node name="node" pkg="pf_localisation" type="node.py" args="scan:=base_scan" output="screen" />
+</launch>
